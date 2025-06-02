@@ -7,7 +7,7 @@ MoRE provides the capability to continue using traditional WebSphere Application
 
 Existing WAS ND Clients can run both Java 8 and Java 17 applications using the same operating model. The same WAS Admin Console can be leveraged to manage the environment.
 
-<img src="images/img-1.png">
+<img src="images/img-00.png">
 
 In the above diagram, the nodes `DMgr Node` and `tWAS Node` are  existing nodes. 
 
@@ -39,10 +39,10 @@ cd /root/install1/
 
 ### 2.2. Download WAS ND 9.0.5.23
 
-<img src="images/img-05.png">
-
 Download the binary `IBM WebSphere Application Server Version 9.0.5 Fix Pack 23 for distributed platforms`
 from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FWebSphere&product=ibm/WebSphere/WebSphere+Application+Server&release=All&platform=All&function=fixId&fixids=9.0.5-WS-WAS-FP023&includeRequisites=1&includeSupersedes=0&downloadMethod=http">URL</a>.
+
+<img src="images/img-05.png">
 
 
 ### 2.3 Download MoRE
@@ -66,7 +66,7 @@ Download the Liberty binary `JAR Install: WebSphere Application Server Network D
 
 ## 3. Extracts the downloads
 
-Move the binaries into the appropriate folder and Exctract them.
+Move the binaries into the appropriate folder and extract them.
 
 ```
 mkdir im
@@ -105,6 +105,8 @@ unzip *.zip
 ```
 
 ## 4. Install the Binaries
+
+**Note:** The installation steps given here are for easy reference. You can update the steps/commands as per your environment.
 
 
 ### 4.1 Upgrade WAS ND 9.0.5.23
@@ -186,7 +188,7 @@ java -jar /root/install1/liberty/wlp-nd-all-20.0.0.3.jar --acceptLicense /opt/IB
 
 ### 5.1 Create Profile
 
-Run the below command to create a profile called `Profile01`
+Run the below command to create a profile called `Profile01`. This will be like the MoRE node mentioned in the past diagram.
 
 ```
 /opt/IBM/WebSphere/AppServer/bin/manageprofiles.sh -create \
@@ -200,7 +202,7 @@ Run the below command to create a profile called `Profile01`
 
 ### 5.2 Start the Node
 
-Run the below command to create a profile called `Profile01`
+Run the below command to create a start the Node/Profile called `Profile01`
 
 ```
 /opt/IBM/WebSphere/Profiles/Profile01/bin/startNode.sh
@@ -215,6 +217,12 @@ Run the below command to create a profile called `Profile01`
 
 <img src="images/img-01.png">
 
-3. You can able to see both `WAS` and `Managed Liberty Server` in the option.
+3. You should be able to see both `WAS` and `Managed Liberty Server` in the option.
 
-<img src="images/img-03.png">
+<img src="images/img-02.png">
+
+## 7. Deploy App
+
+1. Create a New  `Managed Liberty Server` instance.
+
+2. Deploy Java 17 application.
