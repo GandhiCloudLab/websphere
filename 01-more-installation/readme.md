@@ -7,7 +7,7 @@ MoRE provides the capability to continue using traditional WebSphere Application
 
 Existing WAS ND Clients can run both Java 8 and Java 17 applications using the same operating model. The same WAS Admin Console can be leveraged to manage the environment.
 
-<img src="images/img-00.png">
+<img src="images/img-10.png">
 
 In the above diagram, the nodes `DMgr Node` and `tWAS Node` are  existing nodes. 
 
