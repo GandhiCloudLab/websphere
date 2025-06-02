@@ -15,7 +15,7 @@ In the above diagram
 
 ## 1. Objective
 
-The objective of this document is to explain the steps to deploy the following WAS ND along with MoRE. Here we are going to install only the Cell, Node and Profiles only.
+The objective of this document is to explain the steps to deploy the following WAS ND along with MoRE. Here we are going to install only the Cell, Node and Profiles, not the Servers and applications.
 
 <img src="images/img-00.png">
 
@@ -312,37 +312,6 @@ Run the below command to create a start the Node/Profile called `Profile02`
 ```
 /opt/IBM/WebSphere/Profiles/Profile02/bin/startNode.sh
 ```
-
-
-### 5.2 Create Profile (Profile01)
-
-1. Run the below command to create a profile called `Profile01`.
-
-```
-/opt/IBM/WebSphere/AppServer/bin/manageprofiles.sh -create \
-  -profileName Profile01 \
-  -profilePath /opt/IBM/WebSphere/Profiles/Profile01 \
-  -templatePath /opt/IBM/WebSphere/AppServer/profileTemplates/default \
-  -cellName myCell1 \
-  -nodeName Node1 \
-  -hostName node1.test.com \
-```
-
-
-```
-/opt/IBM/WebSphere/Profiles/Profile01/bin/addNode.sh gan71.fyre.ibm.com 8879 -username wasadmin -password PassPass1
-```
-
-
-
-2. Run the below command to start the Node.
-
-Run the below command to create a start the Node/Profile called `Profile01`
-
-```
-/opt/IBM/WebSphere/Profiles/Profile01/bin/startNode.sh
-```
-
 
 ## 6. Was Admin Console
 
