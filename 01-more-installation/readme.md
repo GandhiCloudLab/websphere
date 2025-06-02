@@ -22,7 +22,7 @@ To make the existing WAS ND setup into MoRE setup, you may need to do the follow
 - Create new node (MoRE node) with managed Liberty Server
 - Deploy Java 17 application on top of the new node  (MoRE node).
 
-It is required to have the below servers/softwares installed and available. Lets install them in the upcoming steps.
+It is required to have the below servers/software’s  installed and available. Lets install them in the upcoming steps.
 <img src="images/img-04.png">
 
 
@@ -226,3 +226,8 @@ Run the below command to create a start the Node/Profile called `Profile01`
 1. Create a New  `Managed Liberty Server` instance.
 
 2. Deploy Java 17 application.
+
+
+## 8. Conclusion
+
+With the existing WAS ND, setup you can able to deploy the Java 17 applications using the `Managed Liberty Server` and `MoRE feature pack` successfully.
