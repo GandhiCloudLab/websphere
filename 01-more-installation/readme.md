@@ -62,7 +62,7 @@ from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/selectF
 
 ### 2.6 Download WAS ND Liberty 25.0.0.3
 
-Download the WAS ND Liberty binary `JAR Install: WebSphere Application Server Network Deployment Liberty 25.0.0.1 runtime environment and all features` from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/selectFixes?fixids=wlp-nd-all-25.0.0.3&product=ibm%2FWebSphere%2FWebSphere%20Liberty&source=dbluesearch&mhsrc=ibmsearch_a&mhq=wlp-nd-all-25%26period%3B0%26period%3B0%26period%3B3&function=fixId&parent=ibm/WebSphere">URL</a>.
+Download the WAS ND Liberty binary `JAR Install: WebSphere Application Server Network Deployment Liberty 25.0.0.3 runtime environment and all features` from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/selectFixes?fixids=wlp-nd-all-25.0.0.3&product=ibm%2FWebSphere%2FWebSphere%20Liberty&source=dbluesearch&mhsrc=ibmsearch_a&mhq=wlp-nd-all-25%26period%3B0%26period%3B0%26period%3B3&function=fixId&parent=ibm/WebSphere">URL</a>.
 
 
 ## 3. Extracts the downloads
