@@ -74,10 +74,9 @@ Download the JDK 8 binary `CC1WVML  :  IBM SDK, Java (TM) Technology Edition, Ve
 Download the binary `IIBM Semeru Runtime Certified Edition, Version 17.0.15.0 for Linux 64-bit on Intel/AMD`
 from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/selectFix?fixids=17.0.15.0-IBM-Semeru-Runtime-Certified-SDK-x64-linux-repo&product=ibm%2FWebSphere%2FWebSphere%20Liberty&source=dbluesearch&mhsrc=ibmsearch_a&mhq=%2017%26period%3B0%26period%3B15%26period%3B0-IBM-Semeru-Runtime-Certified-SDK-x64-linux-repo&function=fixId&parent=ibm/WebSphere">URL</a>.
 
-### 2.9 Download WAS ND Liberty 20.0.0.3
+### 2.9 Download WAS ND Liberty 25.0.0.1
 
-Download the Liberty binary `JAR Install: WebSphere Application Server Network Deployment Liberty 20.0.0.3 runtime environment and all features` from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FWebSphere&product=ibm/WebSphere/WebSphere+Liberty&release=All&platform=All&function=fixId&fixids=wlp-nd-all-20.0.0.3&includeRequisites=1&includeSupersedes=0&downloadMethod=http&source=dbluesearch&mhsrc=ibmsearch_a&mhq=liberty+network+deployment">URL</a>.
-
+Download the WAS ND Liberty binary `JAR Install: WebSphere Application Server Network Deployment Liberty 25.0.0.1 runtime environment and all features` from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/selectFixes?fixids=wlp-nd-all-25.0.0.1&product=ibm%2FWebSphere%2FWebSphere%20Liberty&source=dbluesearch&mhsrc=ibmsearch_a&mhq=wlp-nd-all-25%26period%3B0%26period%3B0&function=fixId&parent=ibm/WebSphere">URL</a>.
 
 ## 3. Extracts the downloads
 
@@ -101,8 +100,7 @@ mv sdk.repo.8035.java8.linux.zip java8
 mv ibm-semeru-certified-jdk_x64_linux_17.0.15.0-installmgr.zip java17
 mv 1.0.0.0-WS-MORE.zip more
 mv was.repo.90501.nd.zip wasnd
-mv wlp-nd-all-20.0.0.3.jar liberty
-mv wlp-nd-license.jar liberty
+mv wlp-nd-all-25.0.0.1.jar liberty
 mv 9.0.5-WS-WAS-FP023.zip wasndfix
 
 cd im
@@ -229,7 +227,7 @@ sudo apt install openjdk-17-jre-headless -y
 3. Install `WAS ND Liberty` using the below command 
 
 ```
-java -jar /root/install1/liberty/wlp-nd-all-20.0.0.3.jar --acceptLicense /opt/IBM/WebSphere/Liberty
+java -jar /root/install1/liberty/wlp-nd-all-25.0.0.1.jar --acceptLicense /opt/IBM/WebSphere/Liberty
 ```
 
 ## 5. Create Profile
