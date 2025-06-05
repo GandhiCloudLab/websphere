@@ -1,12 +1,15 @@
-# Installing MoRE (Modernized Runtime Extension) and WAS ND Liberty in WAS ND
+# Installing MoRE and WAS ND Liberty in WAS ND
 
-This document explains step by step instrutions to install MoRE and WAS ND Liberty in the existing WAS ND in Linux  box (Ubundu 24.04).
+This document provides step-by-step instructions for installing the following on a WAS ND installed Linux machine running Ubuntu 24.04.
+- WebSphere Application Server Network Deployment Fix Pack (WAS ND) 9.0.5.23 
+- MoRE (Modernized Runtime Extension) 1.0.0
+- WebSphere Application Server Network Deployment Liberty (WAS ND Liberty) 25.0.0.3
 
 ## 1. About MoRE (Modernized Runtime Extension)
 
-MoRE provides the capability to continue using traditional WebSphere Application Server (tWAS) Operational Model to manage Java 17 and Java 8 applications within the same traditional WebSphere administrative environment
+MoRE provides the capability to continue using `traditional WebSphere Application Server (tWAS)` Operational Model to manage `Java 17` and `Java 8` applications within the same traditional WebSphere administrative environment
 
-MoRE helps the existing WAS ND Clients to run both existing Java 8 and new Java 17 applications using the same operating model. The same WAS Admin Console can be leveraged to manage the environment.
+`MoRE` helps the existing `WAS ND` Clients to run both existing `Java 8` and new `Java 17` applications using the same operating model. The same `WAS Admin Console` can be leveraged to manage the environment.
 
 <img src="images/img-more.png">
 
@@ -26,23 +29,11 @@ It is required to have the below servers/software’s installed and available. L
 
 We are going to download the required binaries in the local folder and then we install them using Installation Manager CLI (imcl).
 
-## 2. Download Binaries
-
-### 2.1. Create Install folder
-
-Create a install folder like this.
-
-```
-mkdir -p /root/install1/
-cd /root/install1/
-```
-
-
 ## 3. Download Binaries
 
 ### 3.1. Create Install folder
 
-Create a install folder like this.
+Create a install folder using this command.
 
 ```
 mkdir -p /root/install1/
@@ -175,7 +166,7 @@ You may see the output like this.
 Installed com.ibm.cic.agent_1.9.3002.20250425_1344 to the /opt/IBM/InstallationManager/eclipse directory.
 ```
 
-### 5.2 Install WAS ND fix pack 9.0.5.23
+### 5.2 Install WAS ND and fix pack 9.0.5.23
 
 Install WAS ND, using the command below.
 
