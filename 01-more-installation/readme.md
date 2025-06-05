@@ -1,6 +1,6 @@
 # Installing MoRE and WAS ND Liberty in WAS ND
 
-This document provides step-by-step instructions for installing the following on a WAS ND installed Linux machine running Ubuntu 24.04.
+This document provides step-by-step instructions for installing the following on a WAS ND installed Linux machine running on Ubuntu 24.04.
 - WebSphere Application Server Network Deployment Fix Pack (WAS ND) 9.0.5.23 
 - MoRE (Modernized Runtime Extension) 1.0.0
 - WebSphere Application Server Network Deployment Liberty (WAS ND Liberty) 25.0.0.3
@@ -349,7 +349,7 @@ ADMU0128I: Starting tool with the Profile02 profile
 ADMU0003I: Node Node2 has been successfully federated.
 ```
 
-## 7. Was Admin Console
+## 7. WAS Admin Console
 
 1. Open the Admin Console https://gan.test.com:9043/ibm/console
 
@@ -375,6 +375,6 @@ ADMU0003I: Node Node2 has been successfully federated.
 3. Deploy Java 17+ application.
 
 
-## 8. Conclusion
+## 9. Conclusion
 
 With the existing WAS ND, setup you can able to deploy the Java 17+ applications using the `Managed Liberty Server` and `MoRE feature pack` successfully.

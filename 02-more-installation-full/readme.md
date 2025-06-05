@@ -1,6 +1,6 @@
 # Installing WAS ND, MoRE and Liberty in Linux (Ubundu)
 
-This document provides step-by-step instructions for installing the following on a Linux machine running Ubuntu 24.04.
+This document provides step-by-step instructions for installing the following on a Linux machine running on Ubuntu 24.04.
 - WebSphere Application Server Network Deployment (WAS ND) 9.0.5.23 
 - MoRE (Modernized Runtime Extension) 1.0.0
 - WebSphere Application Server Network Deployment Liberty (WAS ND Liberty) 25.0.0.3
@@ -388,7 +388,7 @@ ADMU0128I: Starting tool with the Profile02 profile
 ADMU0003I: Node Node2 has been successfully federated.
 ```
 
-## 7. Was Admin Console
+## 7. WAS Admin Console
 
 1. Open the Admin Console https://gan.test.com:9043/ibm/console
 
