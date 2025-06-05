@@ -1,31 +1,34 @@
-# Installing WAS ND and MoRE in Linux (Ubundu)
+# Installing WAS ND, MoRE and Liberty in Linux (Ubundu)
 
-This document explains step by step instrutions to install WAS ND and MoRE in in Linux (Ubundu).
+This document explains step by step instrutions to install  WebSphere Application Server Network Deployment (WAS ND), MoRE and in WebSphere Application Server Network Deployment Liberty in Linux box (Ubundu 24.04).
+
+## 1. About MoRE (Modernized Runtime Extension)
 
 MoRE provides the capability to continue using traditional WebSphere Application Server (tWAS) Operational Model to manage Java 17 and Java 8 applications within the same traditional WebSphere administrative environment
 
-MoRE helps the existing WAS ND Clients to run both Java 8 and Java 17 applications using the same operating model. The same WAS Admin Console can be leveraged to manage the environment.
+MoRE helps the existing WAS ND Clients to run both existing Java 8 and new Java 17 applications using the same operating model. The same WAS Admin Console can be leveraged to manage the environment.
 
-<img src="images/img-10.png">
+<img src="images/img-more.png">
 
 In the above diagram
 - `DMgr Node` is a Deployment Manager node which runs on Java 8.
-- `tWAS Node` is a Server (tWAS) node which runs on Java 8.
-- `MoRE Node` is a `Managed Liberty Server` which runs on Java 17.
+- `tWAS Node` is a node that contains tWAS server which runs on Java 8.
+- `MoRE Node` is a node that contains `Managed Liberty Server`server which runs on Java 17.
 
-## 1. Objective
+## 2. Objective
 
 The objective of this document is to explain the steps to deploy the following WAS ND along with MoRE. Here we are going to install only the Cell, Node and Profiles, not the Servers and applications.
 
-<img src="images/img-00.png">
+<img src="images/img-arch.png">
 
-It is required to have the below servers/software’s  installed and available. Lets install them in the upcoming steps.
-<img src="images/img-04.png">
+It is required to have the below servers/software’s installed and available. Lets install them in the upcoming steps.
+<img src="images/img-im.png">
 
+We are going to download the required binaries in the local folder and then we install them using Installation Manager CLI (imcl).
 
-## 2. Download Binaries
+## 3. Download Binaries
 
-### 2.1. Create Install folder
+### 3.1. Create Install folder
 
 Create a install folder like this.
 
@@ -34,51 +37,69 @@ mkdir -p /root/install1/
 cd /root/install1/
 ```
 
-### 2.2. Download Installation Manager
+### 3.2. Download Installation Manager
 
-Download the Installation Manager binary from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~Rational&product=ibm/Rational/IBM+Installation+Manager&function=all">URL</a>.
+Download the Installation Manager binary from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%7ERational&product=ibm/Rational/IBM+Installation+Manager&release=All&platform=All&function=fixId&fixids=1.9.3.2-IBMIM-LINUX-X86_64-20250425_1344&includeRequisites=1&includeSupersedes=0&downloadMethod=http">URL</a>.
 
 The download file could be `agent.installer.linux.gtk.x86_64_1.9.3002.20250425_1344.zip`
 
-### 2.3. Download Packaging Utility 
+### 3.3. Download WAS ND 9.0.5.1
 
-Download the Packaging Utility binary from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%7ERational&product=ibm/Rational/IBM+Packaging+Utility&release=All&platform=All&function=fixId&fixids=1.9.3.2-IBMPU-LINUX-X86_64-20250425_1434&includeRequisites=1&includeSupersedes=0&downloadMethod=http">URL</a>.
+Clients can download the WAS ND 9.0.5.1 binary `CC3P1ML :  IBM WebSphere Application Server Network Deployment V9.0.5.1 Multiplatform Multilingual` from Passport Advantage Online.
 
-The download file could be `pu.offering.disk.linux.gtk.x86_64_1.9.3002.20250425_1434.zip`
-
-### 2.4. Download WAS ND 9.0.5.1
-
-Download the WAS ND 9.0.5.1 binary `CC3P1ML :  IBM WebSphere Application Server Network Deployment V9.0.5.1 Multiplatform Multilingual` from Passport Advantage Online.
+IBMers can download it from <a href="https://w3.ibm.com/software/xl/download/ticket.wss ">here</a> using the above part number (CC3P1ML).
 
 The download file could be `was.repo.90501.nd.zip`
 
-### 2.5. Download WAS ND 9.0.5.23
+### 3.4. Download WAS ND Fix 9.0.5.23
 
-Download the binary `IBM WebSphere Application Server Version 9.0.5 Fix Pack 23 for distributed platforms`
+Download the fix binary `IBM WebSphere Application Server Version 9.0.5 Fix Pack 23 for distributed platforms`
 from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FWebSphere&product=ibm/WebSphere/WebSphere+Application+Server&release=All&platform=All&function=fixId&fixids=9.0.5-WS-WAS-FP023&includeRequisites=1&includeSupersedes=0&downloadMethod=http">URL</a>.
 
-<img src="images/img-05.png">
+This is a WebSphere traditional contains all (Base, Network Deployment, DMZ Secure Proxy Server). ND is also part of this..
 
+The download file could be `9.0.5-WS-WAS-FP023.zip`
 
-### 2.6 Download MoRE
+<img src="images/img-install.png">
+
+### 3.5 Download MoRE
 
 Download the MoRE binary `IBM Modernized Runtime Extension for Java V1.0.0.0`
-from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm%2FWebSphere&product=ibm/WebSphere/WebSphere+Application+Server&release=All&platform=All&function=fixId&fixids=1.0.0.0-WS-MORE">URL</a>.
+from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FWebSphere&product=ibm/WebSphere/WebSphere+Application+Server&release=All&platform=All&function=fixId&fixids=1.0.0.0-WS-MORE&includeRequisites=1&includeSupersedes=0&downloadMethod=http">URL</a>.
 
-### 2.7 Download JDK 8
+The download file could be `1.0.0.0-WS-MORE.zip`
 
-Download the JDK 8 binary `CC1WVML  :  IBM SDK, Java (TM) Technology Edition, Version 8.0.5.35 for Linux Multilingual` from Passport Advantage Online for Customers.
+### 3.6 Download JDK 8
 
-### 2.8 Download JDK 17
+Download the JDK 8 binary `IBM SDK, Java(TM) Technology Edition, Version 8.0.8.45 for Linux 64-bit on Intel/ AMD`  from the` <a href="https://www.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FWebSphere&product=ibm/WebSphere/WebSphere+Liberty&release=All&platform=All&function=fixId&fixids=8.0.8.45-JavaSE-SDK-linux-x64-repo&includeRequisites=1&includeSupersedes=0&downloadMethod=http&source=fc">URL</a>.
 
-Download the binary `IIBM Semeru Runtime Certified Edition, Version 17.0.15.0 for Linux 64-bit on Intel/AMD`
-from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/selectFix?fixids=17.0.15.0-IBM-Semeru-Runtime-Certified-SDK-x64-linux-repo&product=ibm%2FWebSphere%2FWebSphere%20Liberty&source=dbluesearch&mhsrc=ibmsearch_a&mhq=%2017%26period%3B0%26period%3B15%26period%3B0-IBM-Semeru-Runtime-Certified-SDK-x64-linux-repo&function=fixId&parent=ibm/WebSphere">URL</a>.
+The download file could be `8.0.8.45-JavaSE-SDK-linux-x64-installmgr.zip`
 
-### 2.9 Download WAS ND Liberty 25.0.0.3
 
-Download the WAS ND Liberty binary `JAR Install: WebSphere Application Server Network Deployment Liberty 25.0.0.3 runtime environment and all features` from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/selectFixes?fixids=wlp-nd-all-25.0.0.3&product=ibm%2FWebSphere%2FWebSphere%20Liberty&source=dbluesearch&mhsrc=ibmsearch_a&mhq=wlp-nd-all-25%26period%3B0%26period%3B0%26period%3B3&function=fixId&parent=ibm/WebSphere">URL</a>.
+### 3.7 Download WAS ND Liberty 
 
-## 3. Extracts the downloads
+Clients can download the WAS ND Liberty binary `CC3P2ML :  IBM WebSphere Application Server Liberty Network Deployment (IBM Installation Manager Install) V9.0.5.1 Multiplatform Multilingual	` from Passport Advantage Online.
+
+IBMers can download from <a href="https://w3.ibm.com/software/xl/download/ticket.wss ">here</a> using the above part number (CC3P2ML).
+
+The download file could be `was.repo.19009.liberty.nd.zip`
+
+
+### 3.8 Download WAS ND Liberty Fix Pack 25.0.0.3
+
+Download the WAS ND Liberty Fix Pack `WebSphere Application Server Network Deployment Liberty 25.0.0.3`
+from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FWebSphere&product=ibm/WebSphere/WebSphere+Liberty&release=All&platform=All&function=fixId&fixids=25.0.0.3-WS-LIBERTY-ND-FP&includeRequisites=1&includeSupersedes=0&downloadMethod=http&source=fc">URL</a>.
+
+The download file could be `25.0.0.3-WS-LIBERTY-ND-FP.zip`
+
+### 3.9 Download JDK 17
+
+Download the binary `IBM Semeru Runtime Certified Edition, Version 17.0.15.0 for Linux 64-bit on Intel/AMD`
+from the fix Central <a href="https://www.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FWebSphere&product=ibm/WebSphere/WebSphere+Liberty&release=All&platform=All&function=fixId&fixids=17.0.15.0-IBM-Semeru-Runtime-Certified-SDK-x64-linux-repo&includeRequisites=1&includeSupersedes=0&downloadMethod=http">URL</a>.
+
+The download file could be `ibm-semeru-certified-jdk_x64_linux_17.0.15.0-installmgr.zip`
+
+## 4. Extracts the downloads
 
 Move the binaries into the appropriate folder and extract them.
 
@@ -86,40 +107,25 @@ Move the binaries into the appropriate folder and extract them.
 cd /root/install1/
 
 mkdir im
-mkdir pu
-mkdir java8
-mkdir java17
-mkdir more
 mkdir wasnd
-mkdir liberty
 mkdir wasndfix
+mkdir more
+mkdir java8
+mkdir liberty
+mkdir libertyfix
+mkdir java17
 
 mv agent.installer.linux.gtk.x86_64_1.9.3002.20250425_1344.zip im
-mv pu.offering.disk.linux.gtk.x86_64_1.9.3002.20250425_1434.zip pu
-mv sdk.repo.8035.java8.linux.zip java8
-mv ibm-semeru-certified-jdk_x64_linux_17.0.15.0-installmgr.zip java17
-mv 1.0.0.0-WS-MORE.zip more
 mv was.repo.90501.nd.zip wasnd
-mv wlp-nd-all-25.0.0.3.jar liberty
-mv 9.0.5-WS-WAS-FP023.zip wasndfix
+mv 9.0.5-WS-WAS-FP023.zip wasndfix 
+mv 1.0.0.0-WS-MORE.zip more
+mv ibm-java-sdk-8.0-8.45-linux-x64-installmgr.zip java8
+mv was.repo.19009.liberty.nd.zip liberty
+mv 25.0.0.3-WS-LIBERTY-ND-FP.zip libertyfix
+mv ibm-semeru-certified-jdk_x64_linux_17.0.15.0-installmgr.zip java17
 
+c
 cd im
-unzip *.zip
-
-cd ..
-cd pu
-unzip *.zip
-
-cd ..
-cd java8
-unzip *.zip
-
-cd ..
-cd java17
-unzip *.zip
-
-cd ..
-cd more
 unzip *.zip
 
 cd ..
@@ -130,20 +136,55 @@ cd ..
 cd wasndfix
 unzip *.zip
 
+cd ..
+cd more
+unzip *.zip
+
+cd ..
+cd java8
+unzip *.zip
+
+cd ..
+cd liberty
+unzip *.zip
+
+cd ..
+cd libertyfix
+unzip *.zip
+
+
+cd ..
+cd java17
+unzip *.zip
+
+
 ```
 
-## 4. Install the Binaries
+## 5. Install the Binaries
 
 **Note:** The installation steps given here are for easy reference. You can update the steps/commands as per your environment.
 
-### 4.1 Install WAS ND 9.0.5.1
+### 5.1 Install Installation Manager
+
+```
+cd /root/install1/im
+./installc -acceptlicense
+```
+
+You may see the output like this.
+
+```
+Installed com.ibm.cic.agent_1.9.3002.20250425_1344 to the /opt/IBM/InstallationManager/eclipse directory.
+```
+
+### 5.2 Install WAS ND 9.0.5.1 and with fix pack 9.0.5.23
 
 Install WAS ND, using the command below.
 
 ```
 /opt/IBM/InstallationManager/eclipse/tools/imcl install \
   com.ibm.websphere.ND.v90 com.ibm.java.jdk.v8 \
-  -repositories file:/root/install1/wasnd,file:/root/install1/java8 \
+  -repositories file:/root/install1/wasnd,file:/root/install1/wasndfix,file:/root/install1/java8 \
   -installationDirectory /opt/IBM/WebSphere/AppServer \
   -acceptLicense
 ```
@@ -151,30 +192,11 @@ Install WAS ND, using the command below.
 You may see the output like this.
 
 ```
-Installed com.ibm.websphere.ND.v90_9.0.5001.20190828_0616 to the /opt/IBM/WebSphere/AppServer directory.
-Installed com.ibm.java.jdk.v8_8.0.5035.20190422_0948 to the /opt/IBM/WebSphere/AppServer directory.
+Installed com.ibm.websphere.ND.v90_9.0.5023.20250307_1839 to the /opt/IBM/WebSphere/AppServer directory.
+Installed com.ibm.java.jdk.v8_8.0.8045.20250423_0131 to the /opt/IBM/WebSphere/AppServer directory.
 ```
 
-### 4.2 Upgrade WAS ND 9.0.5.23
-
-Upgrade the existing WAS ND with the fix pack, using the command below.
-
-```
-/opt/IBM/InstallationManager/eclipse/tools/imcl install \
-  com.ibm.websphere.ND.v90_9.0.5023.20250307_1839 com.ibm.java.jdk.v8 \
-  -repositories file:/root/install1/wasndfix,file:/root/install1/java8 \
-  -installationDirectory /opt/IBM/WebSphere/AppServer \
-  -acceptLicense
-```
-
-You may see the output like this.
-
-```
-Updated to com.ibm.websphere.ND.v90_9.0.5023.20250307_1839 in the /opt/IBM/WebSphere/AppServer directory.
-Modified com.ibm.java.jdk.v8_8.0.5035.20190422_0948 in the /opt/IBM/WebSphere/AppServer directory.
-```
-
-### 4.3 Install MoRE
+### 5.3 Install MoRE
 
 Install MoRE, using the command below.
 
@@ -192,8 +214,27 @@ You may see the output like this.
 Installed com.ibm.websphere.MORE.v10_1.0.0.20250307_1858 to the /opt/IBM/WebSphere/AppServer directory.
 ```
 
+### 5.4 Install WAS ND Liberty, Fix Package along with Java 17
 
-### 4.4 Verify the install
+Install WAS ND Liberty, Fix Package and Java 17, using the command below.
+
+```
+/opt/IBM/InstallationManager/eclipse/tools/imcl install \
+  com.ibm.websphere.liberty.ND com.ibm.java.jdk.v17 \
+  -repositories file:/root/install1/liberty,file:/root/install1/libertyfix,file:/root/install1/java17 \
+  -installationDirectory /opt/IBM/WebSphere/Liberty \
+  -acceptLicense
+```
+
+You may see the output like this.
+
+```
+Installed com.ibm.websphere.liberty.ND_25.0.3.20250310_1903 to the /opt/IBM/WebSphere/Liberty directory.
+Installed com.ibm.java.jdk.v17_17.0.15000.20250506_0632 to the /opt/IBM/WebSphere/Liberty directory.
+```
+
+
+### 5.5 Verify the install
 
 Run the below command to verify the install so far
 
@@ -204,58 +245,69 @@ Run the below command to verify the install so far
 You may see the output like this.
 
 ```
-/opt/IBM/InstallationManager/eclipse : com.ibm.cic.agent_1.9.3002.20250425_1344 : IBM® Installation Manager : 1.9.3.2
-/opt/IBM/WebSphere/AppServer : com.ibm.java.jdk.v8_8.0.5035.20190422_0948 : IBM SDK, Java Technology Edition, Version 8 : 8.0.5.35
-/opt/IBM/WebSphere/AppServer : com.ibm.websphere.MORE.v10_1.0.0.20250307_1858 : IBM Modernized Runtime Extension for Java (MoRE) : 1.0.0.0
-/opt/IBM/WebSphere/AppServer : com.ibm.websphere.ND.v90_9.0.5023.20250307_1839 : IBM WebSphere Application Server Network Deployment  : 9.0.5.23
-```
-### 4.4 Install WAS ND Liberty 
-
-
-1. Create `Liberty` folder using the below command
-
-```
-mkdir -p /opt/IBM/WebSphere/Liberty
+com.ibm.cic.agent_1.9.3002.20250425_1344
+com.ibm.java.jdk.v8_8.0.8045.20250423_0131
+com.ibm.websphere.MORE.v10_1.0.0.20250307_1858
+com.ibm.websphere.ND.v90_9.0.5023.20250307_1839
+com.ibm.java.jdk.v17_17.0.15000.20250506_0632
+com.ibm.websphere.liberty.ND_25.0.3.20250310_1903
 ```
 
-2. Ensure you have java installed, if not install using the below command 
+## 6. Create Profile
 
-```
-sudo apt install openjdk-17-jre-headless -y
-```
+### 6.1 Set Java Home
 
-3. Install `WAS ND Liberty` using the below command 
-
+1. Run the below command to set JAVA_HOME.
 ```
-java -jar /root/install1/liberty/wlp-nd-all-25.0.0.3.jar --acceptLicense /opt/IBM/WebSphere/Liberty
+export JAVA_HOME=/opt/IBM/WebSphere/AppServer/java/8.0
+export PATH=$JAVA_HOME/bin:$PATH
 ```
 
-## 5. Create Profile
+### 6.2 Create the Deployment Manager (Dmgr01)
 
-### 5.1 Create the Deployment Manager (Dmgr01)
+#### 6.2.1 Create Profile
 
 1. Run the below command to create a profile called `Dmgr01`.
 
 ```
-/opt/IBM/WebSphere/AppServer/bin/manageprofiles.sh -create \
+  /opt/IBM/WebSphere/AppServer/bin/manageprofiles.sh -create \
   -profileName Dmgr01 \
   -profilePath /opt/IBM/WebSphere/Profiles/Dmgr01 \
   -templatePath /opt/IBM/WebSphere/AppServer/profileTemplates/management \
   -cellName myCell1 \
-  -nodeName DmgrNode \
-  -hostName gan1.test.com \
+  -nodeName DmgrNode1 \
+  -hostName gan.test.com \
   -adminUserName wasadmin \
   -adminPassword xxxxxxxx \
   -enableAdminSecurity true 
 ```
 
-2. Run the below command to start the Manager.
+You may see the output like this.
+
+```
+INSTCONFSUCCESS: Success: Profile Dmgr01 now exists. Please consult /opt/IBM/WebSphere/Profiles/Dmgr01/logs/AboutThisProfile.txt for more information about this profile.
+```
+
+#### 6.2.2 Start the Dmgr
+
+1. Run the below command to Start the Dmgr`.
 
 ```
 /opt/IBM/WebSphere/Profiles/Dmgr01/bin/startManager.sh
 ```
 
-### 5.2 Create Profile (Profile01)
+You may see the output like this.
+
+```
+ADMU0128I: Starting tool with the Dmgr01 profile
+ADMU3100I: Reading configuration for server: dmgr
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server dmgr open for e-business; process id is 16977
+```
+
+### 6.3 Create Profile (Profile01)
+
+#### 6.3.1 Create Profile
 
 1. Run the below command to create a profile called `Profile01`.
 
@@ -264,26 +316,38 @@ java -jar /root/install1/liberty/wlp-nd-all-25.0.0.3.jar --acceptLicense /opt/IB
   -profileName Profile01 \
   -profilePath /opt/IBM/WebSphere/Profiles/Profile01 \
   -templatePath /opt/IBM/WebSphere/AppServer/profileTemplates/default \
-  -cellName myCell1 \
   -nodeName Node1 \
-  -hostName node1.gan1.test.com \
+  -hostName node1.gan.test.com \
+  -serverName AppServer1
 ```
 
-2. Federate Node to Deployment Manager (DMgr)
+You may see the output like this.
 
 ```
-/opt/IBM/WebSphere/Profiles/Profile01/bin/addNode.sh gan1.test.com 8879 -username wasadmin -password xxxxxxxx
+INSTCONFSUCCESS: Success: Profile Profile01 now exists. Please consult /opt/IBM/WebSphere/Profiles/Profile01/logs/AboutThisProfile.txt for more information about this profile.
 ```
 
-3. Run the below command to start the Node.
+#### 6.3.2 Federate Node
 
-Run the below command to create a start the Node/Profile called `Profile01`
+1. Federate Node to Deployment Manager (DMgr)
 
 ```
-/opt/IBM/WebSphere/Profiles/Profile01/bin/startNode.sh
+/opt/IBM/WebSphere/Profiles/Profile01/bin/addNode.sh gan.test.com 8879 -username wasadmin -password xxxxxxxx
 ```
 
-### 5.3 Create Profile (Profile02)
+You may see the output like this.
+
+```
+ADMU0116I: Tool information is being logged in file /opt/IBM/WebSphere/Profiles/Profile01/logs/addNode.log
+ADMU0128I: Starting tool with the Profile01 profile
+.
+.
+ADMU0003I: Node Node1 has been successfully federated.
+```
+
+### 6.4 Create Profile (Profile02)
+
+#### 6.4.1 Create Profile
 
 1. Run the below command to create a profile called `Profile02`.
 
@@ -292,38 +356,53 @@ Run the below command to create a start the Node/Profile called `Profile01`
   -profileName Profile02 \
   -profilePath /opt/IBM/WebSphere/Profiles/Profile02 \
   -templatePath /opt/IBM/WebSphere/AppServer/profileTemplates/default \
-  -cellName myCell1 \
   -nodeName Node2 \
-  -hostName node2.gan1.test.com \
+  -hostName node2.gan.test.com \
+  -serverName AppServer2
 ```
 
-2. Federate Node to Deployment Manager (DMgr)
+You may see the output like this.
 
 ```
-/opt/IBM/WebSphere/Profiles/Profile02/bin/addNode.sh gan1.test.com 8879 -username wasadmin -password xxxxxxxx
+INSTCONFSUCCESS: Success: Profile Profile02 now exists. Please consult /opt/IBM/WebSphere/Profiles/Profile02/logs/AboutThisProfile.txt for more information about this profile.
 ```
 
-3. Run the below command to start the Node.
+#### 6.4.2 Federate Node
 
-Run the below command to create a start the Node/Profile called `Profile02`
+1. Federate Node to Deployment Manager (DMgr)
 
 ```
-/opt/IBM/WebSphere/Profiles/Profile02/bin/startNode.sh
+/opt/IBM/WebSphere/Profiles/Profile02/bin/addNode.sh gan.test.com 8879  -username wasadmin -password xxxxxxxx
 ```
 
-## 6. Was Admin Console
+You may see the output like this.
 
-1. Open the Admin Console https://localhost:9043/ibm/console
+```
+ADMU0116I: Tool information is being logged in file /opt/IBM/WebSphere/Profiles/Profile02/logs/addNode.log
+ADMU0128I: Starting tool with the Profile02 profile
+.
+.
+ADMU0003I: Node Node2 has been successfully federated.
+```
 
-2. You can view the `WAS` with the 9.0.5.23 version
+## 7. Was Admin Console
 
-<img src="images/img-01.png">
+1. Open the Admin Console https://gan.test.com:9043/ibm/console
 
-3. You should be able to see both `WAS` and `Managed Liberty Server` in the option.
+2. You can view the `WebSphere Application Server` with the `9.0.5.23` version
 
-<img src="images/img-02.png">
+<img src="images/img-home.png">
 
-## 7. Deploy App
+3. You should be able to see both `Application Server` and `Managed Liberty Server` in the option.
+
+<img src="images/img-servers.png">
+
+4. The Cell Topology looks like this.
+
+<img src="images/img-topology.png">
+
+
+## 8. Deploy App
 
 1. Create a new profile.
 
@@ -331,6 +410,6 @@ Run the below command to create a start the Node/Profile called `Profile02`
 
 3. Deploy Java 17+ application.
 
-## 8. Conclusion
+## 9. Conclusion
 
-With the existing WAS ND, setup you can able to deploy the Java 17+ applications using the `Managed Liberty Server` and `MoRE feature pack` successfully.
+In the WAS ND, you can able to deploy the Java 17+ applications using the `Managed Liberty Server` and `MoRE feature pack` successfully.
