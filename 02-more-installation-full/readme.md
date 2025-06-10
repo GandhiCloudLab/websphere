@@ -398,13 +398,27 @@ ADMU0003I: Node Node2 has been successfully federated.
 <img src="images/img-topology.png">
 
 
-## 8. Deploy App
+## 8. Creating Managed Liberty Server
 
-1. Create a new profile.
+Create Managed Liberty Sever in Node 1
 
-2. Create a new `Managed Liberty Server` instance in the new profile.
+<img src="images/img-install-liberty-server-1.png">
 
-### 8.1. Deploy Java 17 application in Managed Liberty Server
+<img src="images/img-install-liberty-server-2.png">
+
+<details><summary>Click me for more info</summary>
+
+<img src="images/img-install-liberty-server-3.png">
+<img src="images/img-install-liberty-server-4.png">
+<img src="images/img-install-liberty-server-5.png">
+<img src="images/img-install-liberty-server-6.png">
+<img src="images/img-install-liberty-server-7.png">
+<img src="images/img-install-liberty-server-8.png">
+</details>
+
+## 9. Deploy App
+
+### 9.1. Deploy Java 17 application in Managed Liberty Server
 
 Deploy the Websphere Liberty Java 17 application using the below steps.
 
@@ -427,7 +441,7 @@ Open the application using the url http://xxxxxx:9082/resorts/
 
 </details>
 
-### 8.2. Deploy Java 8 application in WAS 
+### 9.2. Deploy Java 8 application in WAS 
 
 Deploy the tWAS Java 8 application using the below steps.
 
@@ -451,6 +465,6 @@ Open the application using the url http://xxxxxx:9080/resorts/
 </details>
 
 
-## 9. Conclusion
+## 10. Conclusion
 
-In the WAS ND, you can able to deploy the Java 17+ applications using the `Managed Liberty Server` and `MoRE feature pack` successfully.
+In the WAS ND, you can able to deploy both Java8 and Java 17+ applications using the `Managed Liberty Server` and `MoRE feature pack` successfully.
