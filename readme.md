@@ -8,4 +8,6 @@ As of now, these documents are available.
 
 2. <a href="./02-more-installation-full">Installing WAS ND, MoRE and Liberty in Linux (Ubundu)</a>.
 
+3. <a href="./03-about-more">Modernized Runtime Extension for Java (MoRE)</a>.
+
 3. <a href="./51-was-nd">WAS ND architectures</a>.

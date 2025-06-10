@@ -1,31 +1,24 @@
 # Installing WAS ND, MoRE and Liberty in Linux (Ubundu)
 
+The objective of this document is to install MoRE on top of WAS ND and run both tWAS Java 8 and Websphere Liberty Java 17+ applications in the same WAS ND.
+
 This document provides step-by-step instructions for installing the following on a Linux machine running on Ubuntu 24.04.
 - WebSphere Application Server Network Deployment (WAS ND) 9.0.5.23 
 - MoRE (Modernized Runtime Extension) 1.0.0
 - WebSphere Application Server Network Deployment Liberty (WAS ND Liberty) 25.0.0.3
 
+At the end of the installation we will have the below servers/software’s installed and available.
+<img src="images/img-im.png">
+
 ## 1. About MoRE (Modernized Runtime Extension)
 
-MoRE provides the capability to continue using `traditional WebSphere Application Server (tWAS)` Operational Model to manage `Java 17` and `Java 8` applications within the same traditional WebSphere administrative environment
-
-`MoRE` helps the existing `WAS ND` Clients to run both existing `Java 8` and new `Java 17` applications using the same operating model. The same `WAS Admin Console` can be leveraged to manage the environment.
-
-<img src="images/img-more.png">
-
-In the above diagram
-- `DMgr Node` is a Deployment Manager node which runs on Java 8.
-- `tWAS Node` is a node that contains tWAS server which runs on Java 8.
-- `MoRE Node` is a node that contains `Managed Liberty Server`server which runs on Java 17.
+Refer <a href="../03-about-more">here </a> to undertand about Modernized Runtime Extension for Java (MoRE).
 
 ## 2. Objective
 
 The objective of this document is to explain the steps involved in deploying the following WAS ND architecture along with MoRE. 
 
 <img src="images/img-arch.png">
-
-It is required to have the below servers/software’s installed and available. Lets install them in the upcoming steps.
-<img src="images/img-im.png">
 
 We are going to download the required binaries in the local folder and then we install them using Installation Manager CLI (imcl).
 
@@ -412,6 +405,45 @@ ADMU0003I: Node Node2 has been successfully federated.
 2. Create a new `Managed Liberty Server` instance in the new profile.
 
 3. Deploy Java 17+ application.
+
+### Deploy Java 17 application in Managed Liberty Server
+
+Deploy the Websphere Liberty Java 17 application using the below steps.
+
+<img src="images/img-app-install-1.png">
+
+<img src="images/img-app-install-2.png">
+<img src="images/img-app-install-3.png">
+<img src="images/img-app-install-4.png">
+<img src="images/img-app-install-5.png">
+<img src="images/img-app-install-6.png">
+<img src="images/img-app-install-7.png">
+<img src="images/img-app-install-8.png">
+<img src="images/img-app-install-9.png">
+
+Open the application using the url http://xxxxxx:9082/resorts/
+<img src="images/img-app-install-9a.png">
+
+
+### Deploy Java 8 application in WAS 
+
+Deploy the tWAS Java 8 application using the below steps.
+
+<img src="images/img-app2-install-11.png">
+<img src="images/img-app2-install-12.png">
+<img src="images/img-app2-install-13.png">
+<img src="images/img-app2-install-14.png">
+<img src="images/img-app2-install-15.png">
+<img src="images/img-app2-install-16.png">
+<img src="images/img-app2-install-17.png">
+<img src="images/img-app2-install-18.png">
+<img src="images/img-app2-install-19.png">
+<img src="images/img-app2-install-20.png">
+<img src="images/img-app2-install-21.png">
+
+Open the application using the url http://xxxxxx:9080/resorts/
+<img src="images/img-app2-install-22.png">
+
 
 ## 9. Conclusion
 
