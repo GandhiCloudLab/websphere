@@ -404,15 +404,16 @@ ADMU0003I: Node Node2 has been successfully federated.
 
 2. Create a new `Managed Liberty Server` instance in the new profile.
 
-3. Deploy Java 17+ application.
-
-### Deploy Java 17 application in Managed Liberty Server
+### 8.1. Deploy Java 17 application in Managed Liberty Server
 
 Deploy the Websphere Liberty Java 17 application using the below steps.
 
 <img src="images/img-app-install-1.png">
 
 <img src="images/img-app-install-2.png">
+
+<details><summary>Click me for more info</summary>
+
 <img src="images/img-app-install-3.png">
 <img src="images/img-app-install-4.png">
 <img src="images/img-app-install-5.png">
@@ -424,13 +425,17 @@ Deploy the Websphere Liberty Java 17 application using the below steps.
 Open the application using the url http://xxxxxx:9082/resorts/
 <img src="images/img-app-install-9a.png">
 
+</details>
 
-### Deploy Java 8 application in WAS 
+### 8.2. Deploy Java 8 application in WAS 
 
 Deploy the tWAS Java 8 application using the below steps.
 
 <img src="images/img-app2-install-11.png">
 <img src="images/img-app2-install-12.png">
+
+<details><summary>Click me for more info</summary>
+
 <img src="images/img-app2-install-13.png">
 <img src="images/img-app2-install-14.png">
 <img src="images/img-app2-install-15.png">
@@ -443,6 +448,7 @@ Deploy the tWAS Java 8 application using the below steps.
 
 Open the application using the url http://xxxxxx:9080/resorts/
 <img src="images/img-app2-install-22.png">
+</details>
 
 
 ## 9. Conclusion
