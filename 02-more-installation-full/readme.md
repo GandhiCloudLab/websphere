@@ -398,7 +398,7 @@ ADMU0003I: Node Node2 has been successfully federated.
 <img src="images/img-topology.png">
 
 
-## 8. Creating Managed Liberty Server
+## 8. Create Managed Liberty Server
 
 Create Managed Liberty Sever in Node 1
 
